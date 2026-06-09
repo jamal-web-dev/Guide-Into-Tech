@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guide Into Tech</title>
+
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/quiz.css" />
+    <link rel="stylesheet" href="../styles/responsive.css" />
+  </head>
+  <body>
+    <section class="discovery_hero">
+      <div class="discovery_content">
+        <span class="discovery_badge"> Career Discovery </span>
+
+        <h1>Let's Find Your Perfect Tech Path</h1>
+
+        <p>
+          Answer a few questions and receive a personalized roadmap tailored to
+          your interests, goals, and experience level.
+        </p>
+
+        <button class="start_btn">Start Discovery</button>
+      </div>
+    </section>
+
+    <!-- QUESTION SECTION -->
+
+    <section class="quiz_section">
+      <div class="quiz_card">
+        <div class="quiz_progress">
+          <span id="stepText"> Step 1 of 4 </span>
+
+          <div class="progress_bar">
+            <div class="progress_fill" id="progressFill"></div>
+          </div>
+        </div>
+
+        <h2 id="questionTitle">What's Your Experience Level?</h2>
+
+        <p id="questionDescription">
+          Select the option that best describes your current skill level.
+        </p>
+
+        <div class="options_container" id="optionsContainer"></div>
+
+        <div class="quiz_actions">
+          <button class="continue_btn" id="continueBtn" disabled>
+            Continue
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- PROCESSING SECTION -->
+    <section class="processing_section" id="processingSection">
+      <div class="processing_card">
+        <div class="loader"></div>
+
+        <h2>Building Your Personalized Path</h2>
+
+        <p id="processingText">Analyzing your responses...</p>
+      </div>
+    </section>
+    <script src="../src/quiz.js"></script>
+  </body>
+</html>

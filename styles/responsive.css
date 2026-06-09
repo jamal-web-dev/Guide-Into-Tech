@@ -5,6 +5,21 @@
   .metrics_container{
     grid-template-columns: repeat(2, 1fr);
   }
+  .discovery_content h1{
+    font-size: 3.2rem;
+  }
+
+  .quiz_card{
+    padding: 40px;
+  }
+
+  .quiz_card h2{
+    font-size: 2rem;
+  }
+
+  .options_container{
+    grid-template-columns: 1fr;
+  }
 
 }
 
@@ -70,6 +85,93 @@
 
         gap: 40px;
     }
+  
+  
+  .discovery_hero{
+    min-height: 90vh;
+  }
+
+  .discovery_content h1{
+    font-size: 2.6rem;
+  }
+
+  .discovery_content p{
+    font-size: 16px;
+  }
+
+  .quiz_section{
+    padding: 80px 20px;
+  }
+
+  .quiz_card{
+    padding: 30px 20px;
+    border-radius: 24px;
+  }
+
+  .quiz_card h2{
+    font-size: 1.8rem;
+  }
+
+  .option_card{
+    padding: 20px;
+  }
+
+  .continue_btn{
+    width: 100%;
+  }
+
+  .processing_card{
+    padding:40px 20px;
+  }
+
+  .processing_card h2{
+    font-size:1.8rem;
+  }
+  
+  .results_container h1{
+
+    font-size:2rem;
+  }
+  
+  .results_section {
+    padding: 90px 15px;
+  }
+
+  /* HERO TEXT */
+  .results_hero h1 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+  }
+
+  .results_hero p {
+    font-size: 0.95rem;
+  }
+
+  .compatibility h2 {
+    font-size: 2.2rem;
+  }
+
+  /* STACK ALL GRIDS */
+  .results_grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* CARDS */
+  .card {
+    padding: 20px;
+  }
+
+  /* SKILLS GRID */
+  .skills_grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* REASON BLOCK */
+  .reason_card {
+    padding: 20px;
+  }
+
+
 }
 
 @media (max-width: 576px){
@@ -77,5 +179,55 @@
   .metrics_container{
     grid-template-columns: 1fr;
   }
+
+}
+@media (max-width: 480px){
+
+  .discovery_content h1{
+    font-size: 2.1rem;
+  }
+
+  .discovery_badge{
+    font-size: 12px;
+  }
+
+  .quiz_card h2{
+    font-size: 1.5rem;
+  }
+
+  .quiz_card > p{
+    font-size: 14px;
+  }
+
+  .option_card h3{
+    font-size: 1rem;
+  }
+
+  .option_card p{
+    font-size: 14px;
+  }
+  .results_hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .compatibility h2 {
+    font-size: 2rem;
+  }
+
+  .badge {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  /* STACK EVERYTHING EVEN TIGHTER */
+  .skills_grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta_btn {
+    width: 100%;
+    text-align: center;
+  }
+
 
 }
