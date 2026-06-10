@@ -83,7 +83,7 @@
 }
 
 /* ALT PATHS */
-#altPaths p {
+#altPaths p , #career_explanation{
   margin-top: 10px;
   color: #94a3b8;
 }

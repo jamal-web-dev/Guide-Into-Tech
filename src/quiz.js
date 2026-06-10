@@ -1,4 +1,3 @@
-
 // QUESTIONS 
 const questions = [
 
@@ -236,23 +235,12 @@ const questions = [
 
 ];
 
-const stepText =
-document.getElementById("stepText");
-
-const title =
-document.getElementById("questionTitle");
-
-const description =
-document.getElementById("questionDescription");
-
-const optionsContainer =
-document.getElementById("optionsContainer");
-
-const progressFill =
-document.getElementById("progressFill");
-
-const continueBtn =
-document.getElementById("continueBtn");
+const stepText = document.getElementById("stepText");
+const title = document.getElementById("questionTitle");
+const description = document.getElementById("questionDescription");
+const optionsContainer = document.getElementById("optionsContainer");
+const progressFill = document.getElementById("progressFill");
+const continueBtn = document.getElementById("continueBtn");
 
 let currentStep = 0;
 let answers = {};
@@ -365,17 +353,11 @@ const scoreMap = {
 };
 
 function calculateCareerScores() {
-
   Object.values(answers).forEach(answer => {
-
     const scores = scoreMap[answer];
-
     if (!scores) return;
-
     Object.keys(scores).forEach(career => {
-
       careerScores[career] += scores[career];
-
     });
 
   });
@@ -383,13 +365,9 @@ function calculateCareerScores() {
 }
 
 function getCareerRanking() {
-
   const careers = Object.entries(careerScores);
-
   careers.sort((a, b) => b[1] - a[1]);
-
   return careers;
-
 }
 
 function renderQuestion() {
@@ -478,7 +456,8 @@ continueBtn.addEventListener("click", () => {
         score: thirdMatch[1]
       },
 
-      allScores: careerScores
+      allScores: careerScores,
+      answers
 
     };
     saveToLocalStorage(resultData);
