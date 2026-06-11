@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roadmap — Guide Into Tech</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>">
+
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/roadmap.css" />
+    <link rel="stylesheet" href="../styles/responsive.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="nav_container">
+        <a href="../index.html" class="logo">GuideIntoTech</a>
+
+        <nav class="nav_links">
+          <a href="../index.html#features">Features</a>
+          <a href="../index.html#problem">Problems</a>
+          <a href="../index.html#solution">Solutions</a>
+          <a href="../index.html#about">About</a>
+        </nav>
+
+        <div class="nav_cta">
+          <a href="quiz.html">Retake Quiz</a>
+        </div>
+
+        <div class="menu_icon" id="menuIcon">☰</div>
+      </div>
+
+      <div class="mobile_menu" id="mobileMenu">
+        <a href="../index.html#features">Features</a>
+        <a href="../index.html#problem">Problems</a>
+        <a href="../index.html#solution">Solutions</a>
+        <a href="../index.html#about">About</a>
+        <a href="quiz.html" class="mobile_cta">Retake Quiz</a>
+      </div>
+
+      <div class="overlay" id="overlay"></div>
+    </header>
+
+    <section class="roadmap_section">
+      <div class="roadmap_container">
+
+        <!-- HERO -->
+        <div class="roadmap_hero">
+          <span class="badge">Your Learning Roadmap</span>
+          <h1 id="roadmapTitle">Web Development</h1>
+          <p id="roadmapTagline">Build websites and web applications from scratch.</p>
+        </div>
+
+        <!-- PHASES -->
+        <div class="phases_wrapper" id="phasesContainer"></div>
+
+        <!-- BACK LINK -->
+        <a href="result.html" class="back_link">&#8592; Back to Results</a>
+
+      </div>
+    </section>
+
+    <script src="../src/nav.js"></script>
+    <script src="../src/roadmap.js"></script>
+  </body>
+</html>

@@ -79,18 +79,17 @@ body {
 }
 
 /* CTA BUTTON */
-.nav_cta button {
+.nav_cta a {
+  display: inline-block;
   background: #3b82f6;
   color: white;
-  border: none;
   padding: 10px 16px;
   border-radius: 10px;
   font-weight: 600;
-  cursor: pointer;
   transition: 0.3s;
 }
 
-.nav_cta button:hover {
+.nav_cta a:hover {
   transform: scale(1.05);
 }
 
@@ -138,14 +137,15 @@ body {
   color: #f8fafc;
 }
 
-/* mobile button */
-.mobile_menu button {
+/* mobile CTA */
+.mobile_menu .mobile_cta {
+  display: inline-block;
   background: #3b82f6;
-  border: none;
   color: white;
-  padding: 10px;
+  padding: 10px 16px;
   border-radius: 10px;
-  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
 }
 
 /* ACTIVE STATE */
@@ -298,6 +298,7 @@ body {
 
 /* PRIMARY BUTTON */
 .primary_btn {
+  display: inline-block;
   background: var(--button-pri);
   color: white;
   border: none;
@@ -314,6 +315,7 @@ body {
 
 /* SECONDARY BUTTON */
 .secondary_btn {
+  display: inline-block;
   background: transparent;
   color: var(--txt-cl);
   border: 1px solid var(--border-cl);
@@ -672,22 +674,16 @@ FEATURES SECTION
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.mockup_card button {
+.mockup_card a {
+  display: block;
   margin-top: 20px;
-
   width: 100%;
-
   padding: 12px;
-
-  border: none;
-
   border-radius: 12px;
-
   background: var(--button-pri);
-
   color: white;
-
-  cursor: pointer;
+  text-align: center;
+  transition: 0.3s;
 }
 
 .mockup_card,
@@ -709,6 +705,63 @@ FEATURES SECTION
 }
 
 
+
+/* =====================
+ABOUT
+===================== */
+
+.about_section {
+  padding: 100px 20px;
+}
+
+.about_badge {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: rgba(139, 92, 246, 0.12);
+  color: #a78bfa;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.about_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 50px auto 0;
+}
+
+.about_card {
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-cl);
+  border-radius: 20px;
+  padding: 30px;
+  transition: 0.3s;
+}
+
+.about_card:hover {
+  transform: translateY(-5px);
+  border-color: #8b5cf6;
+}
+
+.about_icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.about_card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.about_card p {
+  color: #94a3b8;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
 
 /* =====================
 FOOTER

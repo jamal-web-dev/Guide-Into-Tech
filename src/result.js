@@ -2,6 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const result = JSON.parse(localStorage.getItem("techPathResult"));
 
+  if (!result) {
+    window.location.replace("quiz.html");
+    return;
+  }
+
   const careerTitle = document.getElementById("careerTitle");
   const compatibilityScore = document.getElementById("compatibilityScore");
   const careerMeaning = document.getElementById("careerExplanation");
@@ -20,19 +25,48 @@ document.addEventListener("DOMContentLoaded", () => {
       dataAnalyst: "Data Analyst"
   };
 
+  const name = localStorage.getItem("userName");
+  const greetingEl = document.getElementById("userGreeting");
+  if (name && greetingEl) {
+    greetingEl.textContent = `Here's your path, ${name}`;
+  }
+
   const best = result.bestMatch;
-
-  careerTitle.textContent = careerLabels[best.career];
-  // recommendedPath.textContent = careerLabels[best.career];
-
-  compatibilityScore.textContent = `${Math.round(best.score * 5)}%`;
-
-  altPaths.innerHTML = "";
   const second = result.secondMatch;
   const third = result.thirdMatch;
 
-  const altList = [second, third];
-  altList.forEach(item => {
+  careerTitle.textContent = careerLabels[best.career];
+
+  // Real compatibility: actual score as % of max possible score for that career
+  const maxScore = result.maxScores ? result.maxScores[best.career] : 20;
+  const compatibility = maxScore > 0
+    ? Math.min(100, Math.round((Math.max(0, best.score) / maxScore) * 100))
+    : 0;
+  compatibilityScore.textContent = `${compatibility}%`;
+
+  // Close-call detection: is second place within 15 points of first?
+  const maxScoreSecond = result.maxScores ? result.maxScores[second.career] : 20;
+  const secondPct = maxScoreSecond > 0
+    ? Math.min(100, Math.round((Math.max(0, second.score) / maxScoreSecond) * 100))
+    : 0;
+  const isCloseCall = secondPct >= compatibility - 15 && secondPct > 40;
+
+  const altCard = document.querySelector(".card.secondary h3");
+  altPaths.innerHTML = "";
+
+  if (isCloseCall) {
+    altCard.textContent = "Also a Strong Match";
+    altCard.style.color = "#a78bfa";
+
+    const note = document.createElement("p");
+    note.style.cssText = "font-size:0.85rem; color:#94a3b8; margin-bottom:8px;";
+    note.textContent = "Your answers align closely with more than one path — both are worth exploring.";
+    altPaths.appendChild(note);
+  } else {
+    altCard.textContent = "Alternative Paths";
+  }
+
+  [second, third].forEach(item => {
     const p = document.createElement("p");
     p.textContent = careerLabels[item.career];
     altPaths.appendChild(p);

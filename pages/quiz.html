@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guide Into Tech</title>
+    <title>Quiz — Guide Into Tech</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>">
 
     <!-- Inter Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,16 +18,55 @@
     <link rel="stylesheet" href="../styles/responsive.css" />
   </head>
   <body>
+    <header class="header">
+      <div class="nav_container">
+        <a href="../index.html" class="logo">GuideIntoTech</a>
+
+        <nav class="nav_links">
+          <a href="../index.html#features">Features</a>
+          <a href="../index.html#problem">Problems</a>
+          <a href="../index.html#solution">Solutions</a>
+          <a href="../index.html#about">About</a>
+        </nav>
+
+        <div class="nav_cta">
+          <a href="../index.html">Home</a>
+        </div>
+
+        <div class="menu_icon" id="menuIcon">☰</div>
+      </div>
+
+      <div class="mobile_menu" id="mobileMenu">
+        <a href="../index.html#features">Features</a>
+        <a href="../index.html#problem">Problems</a>
+        <a href="../index.html#solution">Solutions</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html" class="mobile_cta">Home</a>
+      </div>
+
+      <div class="overlay" id="overlay"></div>
+    </header>
+
     <section class="discovery_hero">
       <div class="discovery_content">
         <span class="discovery_badge"> Career Discovery </span>
 
-        <h1>Let's Find Your Perfect Tech Path</h1>
+        <h1 id="heroHeading">Let's Find Your Perfect Tech Path</h1>
 
         <p>
           Answer a few questions and receive a personalized roadmap tailored to
           your interests, goals, and experience level.
         </p>
+
+        <div class="name_field">
+          <label for="userName">What should we call you?</label>
+          <input
+            type="text"
+            id="userName"
+            placeholder="Enter your name..."
+            maxlength="30"
+            autocomplete="off" />
+        </div>
 
         <button class="start_btn">Start Discovery</button>
       </div>
@@ -69,6 +109,7 @@
         <p id="processingText">Analyzing your responses...</p>
       </div>
     </section>
+    <script src="../src/nav.js"></script>
     <script src="../src/quiz.js"></script>
   </body>
 </html>

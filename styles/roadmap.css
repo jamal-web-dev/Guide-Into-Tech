@@ -1,0 +1,240 @@
+.roadmap_section {
+  min-height: 100vh;
+  padding: 120px 20px 80px;
+}
+
+.roadmap_container {
+  max-width: 780px;
+  margin: auto;
+}
+
+/* HERO */
+.roadmap_hero {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.roadmap_hero .badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  margin-bottom: 15px;
+}
+
+.roadmap_hero h1 {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.roadmap_hero p {
+  color: #94a3b8;
+  font-size: 1.1rem;
+}
+
+/* PHASES */
+.phases_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.phase_card {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-cl);
+  border-radius: 18px;
+  padding: 28px;
+  animation: fadeUp 0.4s ease both;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.phase_card:hover {
+  transform: translateY(-4px);
+  border-color: #3b82f6;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* PHASE HEADER */
+.phase_header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.phase_number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  color: #60a5fa;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.phase_header h3 {
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+}
+
+.phase_duration {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+/* TOPICS LIST */
+.phase_topics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px;
+  margin-bottom: 20px;
+  padding-left: 0;
+}
+
+.phase_topics li {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  list-style: none;
+}
+
+/* TOOLS & RESOURCES */
+.phase_meta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.phase_meta_row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.meta_label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #64748b;
+  white-space: nowrap;
+  padding-top: 4px;
+  min-width: 90px;
+}
+
+.meta_tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.meta_tag {
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+}
+
+/* MILESTONE PROJECT */
+.phase_project {
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(139, 92, 246, 0.07);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  margin-bottom: 12px;
+}
+
+.project_label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #a78bfa;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 5px;
+}
+
+.phase_project p {
+  color: #cbd5e1;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* OUTCOME */
+.phase_outcome {
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(34, 197, 94, 0.06);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.outcome_label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4ade80;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 5px;
+}
+
+.phase_outcome p {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* CONNECTOR LINE */
+.phase_connector {
+  width: 2px;
+  height: 30px;
+  background: linear-gradient(to bottom, #3b82f6, transparent);
+  margin: 0 auto;
+  opacity: 0.4;
+}
+
+/* BACK LINK */
+.back_link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 50px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: 1px solid var(--border-cl);
+  color: #94a3b8;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+.back_link:hover {
+  border-color: #3b82f6;
+  color: var(--txt-cl);
+  transform: translateX(-4px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .roadmap_hero h1 {
+    font-size: 2rem;
+  }
+
+  .phase_topics {
+    grid-template-columns: 1fr;
+  }
+}

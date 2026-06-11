@@ -261,94 +261,45 @@ let careerScores = {
 
 const scoreMap = {
 
-  create: {
-    webDevelopment: 3,
-    uiux: 3
-  },
+  // Q1: Which activity sounds most satisfying?
+  create:   { webDevelopment: 3, uiux: 3, cybersecurity: -2, dataAnalyst: -1 },
+  solve:    { cybersecurity: 3, webDevelopment: 2, uiux: -2, digitalMarketing: -1 },
+  analyze:  { dataAnalyst: 3, digitalMarketing: 2, webDevelopment: -1, uiux: -1 },
 
-  solve: {
-    cybersecurity: 3,
-    webDevelopment: 2
-  },
+  // Q2: What excites you most when learning?
+  results:      { webDevelopment: 3, uiux: 2, dataAnalyst: -1, cybersecurity: -1 },
+  understanding:{ cybersecurity: 3, dataAnalyst: 2, digitalMarketing: -2, uiux: -1 },
+  meaning:      { dataAnalyst: 3, digitalMarketing: 2, cybersecurity: -1, webDevelopment: -1 },
 
-  analyze: {
-    dataAnalyst: 3,
-    digitalMarketing: 2
-  },
+  // Q3: Math comfort
+  love_math:  { dataAnalyst: 3, cybersecurity: 2, digitalMarketing: -3, uiux: -2 },
+  okay_math:  { webDevelopment: 2, digitalMarketing: 2, dataAnalyst: -1 },
+  avoid_math: { uiux: 3, digitalMarketing: 2, dataAnalyst: -3, cybersecurity: -2 },
 
-  results: {
-    webDevelopment: 3,
-    uiux: 2
-  },
+  // Q4: Task enjoyment
+  design:     { uiux: 4, webDevelopment: 2, cybersecurity: -3, dataAnalyst: -1 },
+  build:      { webDevelopment: 4, cybersecurity: 2, uiux: -2, digitalMarketing: -1 },
+  investigate:{ cybersecurity: 4, dataAnalyst: 1, uiux: -3, digitalMarketing: -2 },
 
-  understanding: {
-    cybersecurity: 3,
-    dataAnalyst: 2
-  },
+  // Q5: Frustration tolerance
+  design_iterations: { uiux: 4, cybersecurity: -2, dataAnalyst: -1 },
+  debugging:         { webDevelopment: 3, cybersecurity: 3, uiux: -2, digitalMarketing: -2 },
+  reviewing_data:    { dataAnalyst: 4, digitalMarketing: 2, webDevelopment: -2, cybersecurity: -1 },
 
-  meaning: {
-    dataAnalyst: 3,
-    digitalMarketing: 2
-  },
+  // Q6: Workday preference
+  creating:   { webDevelopment: 3, uiux: 3, cybersecurity: -2, dataAnalyst: -1 },
+  optimizing: { cybersecurity: 3, webDevelopment: 2, uiux: -1, digitalMarketing: -1 },
+  researching:{ dataAnalyst: 3, digitalMarketing: 2, webDevelopment: -1, cybersecurity: -1 },
 
-  love_math: {
-    dataAnalyst: 3,
-    cybersecurity: 2
-  },
+  // Q7: Weekly time — now feeds into career fit
+  low_time:   { digitalMarketing: 2, cybersecurity: -2, dataAnalyst: -1 },
+  medium_time:{ webDevelopment: 1, uiux: 1, digitalMarketing: 1 },
+  high_time:  { cybersecurity: 2, dataAnalyst: 2, digitalMarketing: -1 },
 
-  okay_math: {
-    webDevelopment: 2,
-    digitalMarketing: 2
-  },
-
-  avoid_math: {
-    uiux: 3,
-    digitalMarketing: 2
-  },
-
-  design: {
-    uiux: 4,
-    webDevelopment: 2
-  },
-
-  build: {
-    webDevelopment: 4,
-    cybersecurity: 2
-  },
-
-  investigate: {
-    cybersecurity: 4,
-    dataAnalyst: 1
-  },
-
-  design_iterations: {
-    uiux: 4
-  },
-
-  debugging: {
-    webDevelopment: 3,
-    cybersecurity: 3
-  },
-
-  reviewing_data: {
-    dataAnalyst: 4,
-    digitalMarketing: 2
-  },
-
-  creating: {
-    webDevelopment: 3,
-    uiux: 3
-  },
-
-  optimizing: {
-    cybersecurity: 3,
-    webDevelopment: 2
-  },
-
-  researching: {
-    dataAnalyst: 3,
-    digitalMarketing: 2
-  }
+  // Q8: Learning speed — now feeds into career fit
+  fast:   { webDevelopment: 1, uiux: 1 },
+  average:{ digitalMarketing: 1, webDevelopment: 1 },
+  slow:   { dataAnalyst: 2, cybersecurity: 1, digitalMarketing: -1 }
 
 };
 
@@ -359,9 +310,33 @@ function calculateCareerScores() {
     Object.keys(scores).forEach(career => {
       careerScores[career] += scores[career];
     });
+  });
+}
 
+// For each career, find the highest score it could have received per question
+function getMaxPossibleScores() {
+  const careers = Object.keys(careerScores);
+  const maxScores = {};
+  careers.forEach(c => maxScores[c] = 0);
+
+  questions.forEach(question => {
+    const bestPerCareer = {};
+    careers.forEach(c => bestPerCareer[c] = 0);
+
+    question.options.forEach(option => {
+      const scores = scoreMap[option.value] || {};
+      careers.forEach(career => {
+        const s = scores[career] || 0;
+        if (s > bestPerCareer[career]) bestPerCareer[career] = s;
+      });
+    });
+
+    careers.forEach(career => {
+      maxScores[career] += bestPerCareer[career];
+    });
   });
 
+  return maxScores;
 }
 
 function getCareerRanking() {
@@ -385,6 +360,10 @@ function renderQuestion() {
 
   progressFill.style.width =
   `${((currentStep + 1) / questions.length) * 100}%`;
+
+  continueBtn.textContent = currentStep === questions.length - 1
+    ? "See My Results"
+    : "Continue";
 
   optionsContainer.innerHTML = "";
 
@@ -431,14 +410,12 @@ continueBtn.addEventListener("click", () => {
     renderQuestion();
   }else{
     calculateCareerScores();
+    const maxScores = getMaxPossibleScores();
     const ranking = getCareerRanking();
 
     const bestMatch = ranking[0];
     const secondMatch = ranking[1];
     const thirdMatch = ranking[2];
-
-    // console.log(careerScores);
-    // console.log(ranking);
 
     const resultData = {
       bestMatch: {
@@ -457,6 +434,7 @@ continueBtn.addEventListener("click", () => {
       },
 
       allScores: careerScores,
+      maxScores,
       answers
 
     };
@@ -523,16 +501,25 @@ function startProcessing(){
 
     clearInterval(interval);
 
-    window.location.href = "../pages/result.html"
-    console.log(
-      "READY FOR RESULTS PAGE"
-    );
+    window.location.href = "result.html";
 
   }, 6500);
 
 }
 
-startBtn.addEventListener("click", ()=>{
+const userNameInput = document.getElementById("userName");
+const heroHeading = document.getElementById("heroHeading");
+
+userNameInput.addEventListener("input", () => {
+  const name = userNameInput.value.trim();
+  heroHeading.textContent = name
+    ? `Let's Find Your Perfect Tech Path, ${name}`
+    : "Let's Find Your Perfect Tech Path";
+});
+
+startBtn.addEventListener("click", () => {
+  const name = userNameInput.value.trim();
+  localStorage.setItem("userName", name);
   discoveryHero.style.display = "none";
   quizSection.style.display = "block";
 })

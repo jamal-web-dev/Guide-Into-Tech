@@ -5,6 +5,14 @@
   .metrics_container{
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .about_grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .results_grid_two {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .discovery_content h1{
     font-size: 3.2rem;
   }
@@ -171,6 +179,24 @@
     padding: 20px;
   }
 
+  /* ABOUT */
+  .about_grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* RESULTS 3-COL → 1-COL */
+  .results_grid_two {
+    grid-template-columns: 1fr;
+  }
+
+  /* ROADMAP */
+  .roadmap_hero h1 {
+    font-size: 2rem;
+  }
+
+  .phase_topics {
+    grid-template-columns: 1fr;
+  }
 
 }
 
